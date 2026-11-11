@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "escc-lnm"
+version = "1.0.0"
+description = "H&E-to-RNA modeling and lymph node metastasis prediction"
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[project.scripts]
+escc-lnm = "escc_lnm.cli:main"
+
+[tool.setuptools]
+packages = ["escc_lnm"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

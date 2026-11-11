@@ -1,89 +1,88 @@
-# ESCC LNM prediction from H&E with a CosMx-supervised RNA bridge
+# ESCC LNM prediction from whole-slide histology
 
-Manuscript analysis source for the frozen Phikon → Ridge → image-inferred RNA → PLS-DA Top100 → logistic regression workflow.
+This package predicts lymph node metastasis in esophageal squamous cell carcinoma from H&E whole-slide images. A Phikon encoder and CosMx-supervised Ridge bridge generate image-inferred RNA features. Patient-level feature selection and machine learning produce the LNM score.
 
-The source revision follows the audited Stage21 clinical-LNM development branch and Stage24 local attribution analysis. This commit replaces the earlier ResNet50/Image2Gene implementation. The parent Git commit retains that implementation.
+The package includes image sampling, RNA bridge training, nine feature selectors, twelve classifiers, nested cross-validation, model evaluation and spatial risk attribution.
 
-## Repository scope
+## Installation
 
-Source manifests map each analysis file to its original and release SHA256. Local filesystem constants serve as installation tokens. Stage14 retains the rankers and calibrated model definitions consumed by Stage21, with legacy experimental entry points removed. Historical discrepancy sensitivity is controlled via private manifest flags instead of hard-coded accession identifiers.
+Use Python 3.12 and a CUDA-enabled PyTorch installation for image encoding.
 
-## Analysis workflow
+    pip install -e .
+    escc-lnm --help
 
-The pipeline extracts patch embeddings from H&E WSI tiles using a frozen Phikon encoder, aggregates features within sampled FOVs, and maps visual embeddings to inferred RNA profiles via a CosMx-supervised Ridge bridge. Aggregated patient-level inferred RNA vectors are subsetted to the PLS-DA top 100 genes, standardized, and fed into a L2-regularized logistic regression classifier with cross-fitted sigmoid calibration for patient-level LNM prediction. Model performance is evaluated against clinical outcome labels.
+## Workflow
 
-## Source layout
+### 1. Train the RNA bridge
 
-- `analysis/03_bridge_training`: patient-grouped bridge regression, control experiments, evaluation and plotting routines
-- `analysis/10_lnm_sampling_corrected/scripts`: FOV sampler and shared utilities
-- `analysis/14_RNA_LNM_classifier_optimization/scripts/rna_experiment.py`: RNA ranking, scaling and calibration definitions used in Stage21
-- `analysis/21_surgical_RNA_LNM_development/clinical_LNM_v2`: 12-classifier search, model selection ordering and internal analyses
-- `analysis/23_manuscript_figures`: manuscript panel functions and ESD outcome-direction validation
-- `analysis/SCI论文最终组图素材`: Stage24 attribution, figure generation and feature-count audit scripts
-- `scripts`: installation, frozen inference, fixed prediction evaluation and corrected-ESD rendering entrypoints
+Prepare an NPZ file containing aligned FOV arrays.
 
-## Environment
+| Array | Contents |
+|---|---|
+| embeddings | Phikon embeddings, FOV × 768 |
+| log_expression | Measured log1p(CPM), FOV × gene |
+| counts, negative_counts | RNA and negative-probe counts |
+| Patient_ID, outer_fold | Patient identifiers and fixed fold assignments |
+| gene_names | Ordered gene names |
+| primary | Optional boolean indicator for primary-tissue evaluation |
 
-Archived analyses were run under Python 3.12. Dependencies are listed in `requirements.txt`. PyTorch and torchvision must match the CUDA build used for frozen feature extraction (CUDA 12.4). The optional Illustrator workflow requires `pywin32` and a local Adobe Illustrator installation.
+    escc-lnm train-bridge --input inputs/cosmx_fovs.npz --output models/bridge
 
-Frozen Phikon weights and private project checkpoints are required at runtime. Third-party weights and proprietary runtime directories are not distributed here.
+### 2. Extract patient RNA features
 
-## Install analysis source
+The slide manifest is a CSV with Patient_ID, slide_id and path. Supply the local Phikon directory and fitted Ridge bridge. The ordered gene list can be supplied as a JSON array or an object containing gene_names.
 
-Prepare a private JSON path config following `config/paths.example.json` with absolute paths to workspace, image assets and encoder resources.
+    escc-lnm extract --slides inputs/slides.csv --encoder models/phikon --bridge models/bridge/bridge.joblib --output output/features
 
-```
-python scripts/install_sources.py --paths /private/paths.json --dry-run
-python scripts/install_sources.py --paths /private/paths.json
-```
+Sampling uses physical FOVs of approximately 512 µm and tissue-positive 224-pixel tiles. FOV RNA is averaged within each slide, followed by an equal-slide patient mean. The command writes patient_rna.parquet and a slides.csv file linking each slide to its FOV features and coordinates.
 
-The installer validates all target files before writing. Use `--overwrite-code` to replace existing source files when needed. Retain matching input and configuration revisions for reproducibility. Input schemas are documented in `docs/private_inputs.md`. Private manifests, model locks and fitted preprocessing artifacts are supplied separately.
+### 3. Train and compare classifiers
 
-## Frozen prediction from cached full-panel RNA
+The patient manifest contains Patient_ID and binary LNM. Supply outer_fold values 0–4 to use fixed patient partitions. The feature table has one patient per row and RNA gene names as columns.
 
-```
-python scripts/predict_cached.py --project-root /private/CosMx_HE_Bridge_v3 --features /private/patient_inferred_RNA.parquet --output /private/output/frozen_predictions.csv
-```
+    escc-lnm train --features output/features/patient_rna.parquet --patients inputs/patients.csv --output output/training
 
-The entrypoint validates checkpoint SHA256 and gene panel schema before running the fixed classifier. Load joblib checkpoints only from trusted sources.
+Nine selectors and feature counts 5, 10, 20, 30, 50 and 100 are compared for all twelve classifiers. Each classifier receives 162 factorial, 24 refinement and six matched-count attempts within each training context. Mean inner AUROC determines selection, followed by AUPRC, Brier score, AUROC SD, feature count and deterministic ties. Feature ranking, scaling and probability calibration are fitted inside the corresponding training partitions.
 
-## Fixed-prediction evaluation
+Outputs include classifier.joblib, model.json, patient-level OOF scores, classifier rankings and feature-count comparisons.
 
-```
-python scripts/evaluate_predictions.py --scores /private/output/frozen_predictions.csv --labels /private/confirmed_outcomes.csv --threshold 0.36731575640740904 --output /private/output/evaluation
-```
+### 4. Predict and evaluate
 
-The label file contains case-level LNM status. For ESD label correction, case labels are updated after grouping while predicted probabilities and thresholds remain unchanged. Evaluation performs an exact patient-key join using the supplied labels.
+    escc-lnm predict --features output/features/patient_rna.parquet --classifier output/training/classifier.joblib --model-info output/training/model.json --output output/predictions.csv
+    escc-lnm evaluate --scores output/predictions.csv --labels inputs/outcomes.csv --threshold 0.36731575640740904 --output output/evaluation
 
-To reproduce archived bootstrap intervals under corrected outcomes:
+The outcome CSV contains Patient_ID and LNM. Evaluation returns AUROC, AUPRC, classification metrics, confidence intervals, calibration and decision-curve data. Use the working threshold saved with the selected model.
 
-```
---bootstrap-reference-labels /private/original_outcomes.csv
-```
+To prepare an existing fitted classifier for the prediction command, supply its checkpoint, ordered gene names and a JSON mapping of working-point names to thresholds.
 
-This preserves the original stratified sampling order; all metrics are computed using the updated labels provided via `--labels`.
+    escc-lnm prepare-model --classifier models/classifier.joblib --genes inputs/genes.json --thresholds inputs/thresholds.json --output models/predictor
 
-## Twelve classifiers and nine selectors
+### 5. Generate H&E risk attribution
 
-Each classifier is evaluated across a factorial design of nine selectors, six feature counts and three classifier parameter profiles. Each configuration receives 24 refinement runs and six matched-count runs, yielding 192 trials per context. Duplicated configurations reuse prior trial records.
+    escc-lnm explain --slides output/features/slides.csv --labels inputs/outcomes.csv --classifier output/training/classifier.joblib --model-info output/training/model.json --threshold 0.36731575640740904 --output output/attribution
+    escc-lnm figures --kind attribution --input output/attribution
 
-Primary model ordering: mean inner-fold AUROC → mean inner AUPRC → pooled inner Brier score → inner AUROC SD → feature count → deterministic hash. Training-only preprocessing, ranking, calibration and threshold selection are refitted within partitions. The full search is repeated on every outer training split. Separate OOF estimates are generated for the selection pipeline and the final classifier family.
+Representative TP, FN, TN and FP cases are selected by proximity to their group median score. Ties use an anonymous identifier. The main slide has the largest tissue-support area. Each FOV is removed in turn and the patient score is recomputed. Positive contributions appear red and negative contributions blue, using one shared scale. Each case receives independent H&E, FOV-location, contribution and native-resolution detail panels.
 
-```
-python scripts/run_stage.py --project-root /private/CosMx_HE_Bridge_v3 --stage train12
-python scripts/run_stage.py --project-root /private/CosMx_HE_Bridge_v3 --stage compare12
-```
+### 6. Export analysis figures
 
-Search configuration records algorithm names, budgets, parameter profiles, precomputed draws, seeds and ranking rules. Patient partitions and input hashes must be reconstructed locally. Sample overlap between bridge supervision and training cohorts should be considered when interpreting internal and external results.
+    escc-lnm figures --kind classifiers --input output/training --output output/classifier_figures
+    escc-lnm figures --kind evaluation --input output/evaluation --scores output/predictions.csv --labels inputs/outcomes.csv --output output/evaluation_figures
 
-## ESD figures and attribution
+Figures are exported as editable PDF and SVG, with 600 dpi PNG previews.
 
-```
-python scripts/render_corrected_esd.py --project-root /private/CosMx_HE_Bridge_v3 --output /private/output/corrected_ESD --confirm-corrected-esd-labels
-python scripts/run_stage.py --project-root /private/CosMx_HE_Bridge_v3 --stage attribution
-python scripts/run_stage.py --project-root /private/CosMx_HE_Bridge_v3 --stage attribution-figures
-```
+## Package structure
 
-Stage24 selects TP, TN and FP samples by distance to group median frozen probability with a fixed tie-breaking rule for anonymous IDs, and includes the single FN. Main-slide selection is based on tissue-support area. Attribution is implemented by sequential leave-one-FOV removal and recomputation of slide-to-patient aggregation.
+| Module | Function |
+|---|---|
+| sampling, inference | Physical FOV sampling, Phikon encoding and patient prediction |
+| bridge | Patient-weighted image-to-RNA Ridge regression |
+| selection, search_space, training | RNA selection and nested classifier optimization |
+| models | Feature scaling, calibrated classifiers and checkpoint loading |
+| evaluation | Patient-level metrics, intervals, calibration and DCA |
+| attribution, plots | FOV contributions and publication figures |
+| config | Sampling settings and reproducible search parameters |
 
-Attribution values are defined as the difference between full-model and leave-one-FOV uncalibrated LR log-odds. The output CSV also tracks calibrated probability shifts and float32 aggregation rounding error. All visualizations use a symmetric colour scale; only sampled footprints overlapping the tissue mask are rendered. H&E crops are selected by maximum absolute attribution within the slide.
+## Tests
+
+    python -m unittest discover -s tests -v

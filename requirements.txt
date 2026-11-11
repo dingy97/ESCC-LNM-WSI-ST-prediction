@@ -1,4 +1,4 @@
-# Recorded analysis versions. Install the matching CUDA build for torch/torchvision.
+# Install the matching CUDA build for torch/torchvision.
 numpy==1.26.4
 pandas==2.3.3
 scipy==1.14.1
@@ -13,12 +13,8 @@ Pillow==10.4.0
 matplotlib==3.10.9
 filelock==3.16.0
 threadpoolctl==3.5.0
-statsmodels==0.14.6
 lightgbm==4.6.0
 xgboost==3.2.0
 catboost==1.2.10
 boruta==0.4.3
 pyarrow==22.0.0
-PyMuPDF==1.27.2.3
-# Optional, only for the installed Windows Illustrator import check.
-pywin32; sys_platform == "win32"
