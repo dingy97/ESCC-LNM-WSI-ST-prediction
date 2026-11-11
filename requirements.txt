@@ -1,11 +1,24 @@
-torch>=2.0.0
-torchvision>=0.15.0
-openslide-python>=1.3.0
-numpy>=1.24.0
-pandas>=2.0.0
-scikit-learn>=1.3.0
-scipy>=1.10.0
-Pillow>=10.0.0
-joblib>=1.3.0
-tifffile>=2023.0.0
-matplotlib>=3.7.0
+# Recorded analysis versions. Install the matching CUDA build for torch/torchvision.
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.14.1
+scikit-learn==1.9.0
+joblib==1.4.2
+torch==2.6.0
+torchvision==0.21.0
+transformers==4.46.3
+opencv-python-headless==4.10.0.84
+openslide-python==1.4.3
+Pillow==10.4.0
+matplotlib==3.10.9
+filelock==3.16.0
+threadpoolctl==3.5.0
+statsmodels==0.14.6
+lightgbm==4.6.0
+xgboost==3.2.0
+catboost==1.2.10
+boruta==0.4.3
+pyarrow==22.0.0
+PyMuPDF==1.27.2.3
+# Optional, only for the installed Windows Illustrator import check.
+pywin32; sys_platform == "win32"

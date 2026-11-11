@@ -1,0 +1,278 @@
+[
+  {
+    "path": "analysis/03_bridge_training/scripts/bridge_core.py",
+    "original_sha256": "92d871a6fea267dd8169a02dd23277b4322b21bc5a2d312694e11ffdbd45f503",
+    "release_sha256": "92d871a6fea267dd8169a02dd23277b4322b21bc5a2d312694e11ffdbd45f503",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/bridge_models.py",
+    "original_sha256": "67ac25a302298f80b41b3bcfc69d4074360f800e7fc4127dd36955fbc1fc2f01",
+    "release_sha256": "67ac25a302298f80b41b3bcfc69d4074360f800e7fc4127dd36955fbc1fc2f01",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/broad_inference.py",
+    "original_sha256": "d8f5dad5ef17e83d7df4121bfa8c0764f879332661cf6e0f7fbcd34aa88d0849",
+    "release_sha256": "d8f5dad5ef17e83d7df4121bfa8c0764f879332661cf6e0f7fbcd34aa88d0849",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/full_embedding_ridge.py",
+    "original_sha256": "36d1b0d423f4d49b11583b6f0bb66fab15215d09a69b42b35af435fb9d8ef79b",
+    "release_sha256": "36d1b0d423f4d49b11583b6f0bb66fab15215d09a69b42b35af435fb9d8ef79b",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/train_bridge.py",
+    "original_sha256": "cb432b9996107526128ee7a9471c74b71c8b4579920ba4adc5e2e631d2e77686",
+    "release_sha256": "cb432b9996107526128ee7a9471c74b71c8b4579920ba4adc5e2e631d2e77686",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/evaluate_bridge.py",
+    "original_sha256": "6a5c85a70ab6ace9ee0a7a9898144cdb3781c7c2706f212955752c4305d621d3",
+    "release_sha256": "6a5c85a70ab6ace9ee0a7a9898144cdb3781c7c2706f212955752c4305d621d3",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/image_qc.py",
+    "original_sha256": "351189ac271b7d86eb59912700226e0429690fbdc3f8b6c96fc0f1fa1ad73d08",
+    "release_sha256": "351189ac271b7d86eb59912700226e0429690fbdc3f8b6c96fc0f1fa1ad73d08",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/extract_frozen_features.py",
+    "original_sha256": "2543ea1b47b71226d63a61a1259aeede3e6cc5064373065828f0b848ccd2b321",
+    "release_sha256": "707031a179f5d619fc10906de549e6f804df005f9690f9cedb78648a5274eaf7",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/bridge_controls.py",
+    "original_sha256": "96478a9158abce33e41c332b0079c4107bdb4f64c10b4de9a8d711cc1e17bb19",
+    "release_sha256": "96478a9158abce33e41c332b0079c4107bdb4f64c10b4de9a8d711cc1e17bb19",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/molecular_programs.py",
+    "original_sha256": "9804113f5d0966f7c4af575d80bfa8338fa7d2c07f45dc2b907072523aac6609",
+    "release_sha256": "9804113f5d0966f7c4af575d80bfa8338fa7d2c07f45dc2b907072523aac6609",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/program_latent_performance.py",
+    "original_sha256": "535d899ad98f6eae489f2fe729d87371697b8bb7b0dcdb957e47dd973513d286",
+    "release_sha256": "535d899ad98f6eae489f2fe729d87371697b8bb7b0dcdb957e47dd973513d286",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/run_full_embedding.py",
+    "original_sha256": "f4ad2d25ecc29647c5101e9d433777caf88bec538e45f58f808d4c5aa67b6dec",
+    "release_sha256": "f4ad2d25ecc29647c5101e9d433777caf88bec538e45f58f808d4c5aa67b6dec",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/freeze_broad_bundle.py",
+    "original_sha256": "f8e25de05c366e76ed8bad72e7dc1f9a5cd02655b27929aa4983a8b126fd343c",
+    "release_sha256": "f8e25de05c366e76ed8bad72e7dc1f9a5cd02655b27929aa4983a8b126fd343c",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/freeze_exploratory_bundle.py",
+    "original_sha256": "99599e3eaba5ba3550b2bbabb8acab4b174d09d54e7a5b3e529453413c5925e7",
+    "release_sha256": "99599e3eaba5ba3550b2bbabb8acab4b174d09d54e7a5b3e529453413c5925e7",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/capacity_RNA_sensitivity.py",
+    "original_sha256": "a40c422b7a9487ba2f122b1ab872012532bcbf5eb5d0e7e60d82d5d7483af3d5",
+    "release_sha256": "a40c422b7a9487ba2f122b1ab872012532bcbf5eb5d0e7e60d82d5d7483af3d5",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/evaluate_capacity_and_joint.py",
+    "original_sha256": "ec2d620b655d23d7aa17c353a5dabf24c2ab09c4369b162c855be671bfda26d1",
+    "release_sha256": "ec2d620b655d23d7aa17c353a5dabf24c2ab09c4369b162c855be671bfda26d1",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/joint_gene_program.py",
+    "original_sha256": "23c8fedade055ab61ac1f275e8e1bf06fc596e30fb1dff2284aed559a8faa409",
+    "release_sha256": "23c8fedade055ab61ac1f275e8e1bf06fc596e30fb1dff2284aed559a8faa409",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/whole_profile_outputs.py",
+    "original_sha256": "2fbbe33f0dd1bd2064a2ca9d42fade7f433389db9e75900b4775564b1fb035fc",
+    "release_sha256": "2fbbe33f0dd1bd2064a2ca9d42fade7f433389db9e75900b4775564b1fb035fc",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/annotation_sensitivity_inputs.py",
+    "original_sha256": "051993da6c5ade58782362ce8218c162a5598e82fd2035be8723fdc696da8d9f",
+    "release_sha256": "12fedb113335cdb5162f953229f1b6d7c740afd67b55a5741e8670958d8dcbf1",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/annotation_negative_controls.py",
+    "original_sha256": "2675dfec389a0ba88b79d1285f2a3ca38655c92b034abaf98a3e7c41aa13633d",
+    "release_sha256": "5138f0988430c21273c1e7c922a01817eca742c12fe71ef005f3a4aad2b0d537",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/summarize_sensitivities.py",
+    "original_sha256": "323198338d26491618b3bf70c7ce81cb839a38667c8139400646fbdc92688ac6",
+    "release_sha256": "323198338d26491618b3bf70c7ce81cb839a38667c8139400646fbdc92688ac6",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/run_sensitivities.py",
+    "original_sha256": "ab426dc203d538f215d5e7443543a9f2795d43c654a9dd391db28a5134ceddb6",
+    "release_sha256": "ab426dc203d538f215d5e7443543a9f2795d43c654a9dd391db28a5134ceddb6",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/plot_stage2.py",
+    "original_sha256": "683af1eea3911ddcde51e5a772478e265d3c8ad38360453d31fb21381e6bc3f2",
+    "release_sha256": "800ca8153bd93115fb65fd9a4c77ff128786ab17954a8a06bd99c64372bfa761",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/03_bridge_training/scripts/plot_whole_profile_workflow.py",
+    "original_sha256": "c48b5c848ad85cff4eec8956f2fcba226dae627de2abc4b24fd198a66468466a",
+    "release_sha256": "c48b5c848ad85cff4eec8956f2fcba226dae627de2abc4b24fd198a66468466a",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/10_lnm_sampling_corrected/scripts/common.py",
+    "original_sha256": "416d988ed28b7b93abda0160eae47259e61f34222aa99664b7af1a94f698c83b",
+    "release_sha256": "b621df0f0ca0346720652ee8e42a7784a59f6fd9c71fb198b4fa7a367729bfcf",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/10_lnm_sampling_corrected/scripts/ml_components.py",
+    "original_sha256": "593b87e8aee87f2af42ff0b2c091077c68fb5a74d75d842f5c65df0025521362",
+    "release_sha256": "b8f76cade4fb5002fc526c5e5dca4775aa575d296510144cb48855c44421a1c1",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/10_lnm_sampling_corrected/scripts/spatial_sampling.py",
+    "original_sha256": "323cf0c187d999525abaab55f7a6a8c15309d62a4cf2c012105a921eebcdeaa6",
+    "release_sha256": "b64a4beb1f4c29e5b7caaf97b3feab04d07f4f5137ee5a3ccd4c930f32e405d1",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/10_lnm_sampling_corrected/scripts/extract_wsi_features.py",
+    "original_sha256": "865fa765f603baed0e471933d444ea6fcc74a31dcc24b507754b0466b07fa815",
+    "release_sha256": "2c93e9169c170a5d8f971dddb07b770b2c2608740808a26867f64e692694bb2c",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/12_stage5_high_sensitivity/scripts/clinical_utils.py",
+    "original_sha256": "55e11a4b4c80452efde0922e70775af736e8e2b923c95311ad0b2399f39f5f08",
+    "release_sha256": "55e11a4b4c80452efde0922e70775af736e8e2b923c95311ad0b2399f39f5f08",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/14_RNA_LNM_classifier_optimization/scripts/rna_experiment.py",
+    "original_sha256": "299a98207f5d6d4b5c6f8c5d3aedb70cba89352fd722d0dd6bd3419bba8b0aea",
+    "release_sha256": "e11f30ee0fda93bb6fb3b7a3bcd6bf72e74803eddbc8c6e290c8491e247a0742",
+    "adaptation": "Local path constants replaced by documented installation tokens. Stage14 orchestration omitted; shared definitions retained through calibrated_fit."
+  },
+  {
+    "path": "analysis/21_surgical_RNA_LNM_development/scripts/extract_ESD_features.py",
+    "original_sha256": "e90878080ab8a254110f359202eacbb502394f559af62007cac0fd455f9bf71c",
+    "release_sha256": "e90878080ab8a254110f359202eacbb502394f559af62007cac0fd455f9bf71c",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/21_surgical_RNA_LNM_development/clinical_LNM_v2/scripts/model_space.py",
+    "original_sha256": "677f8f32a41ce4726da72d0d4971019d59e668e3b2db2354812deb5ce5f4fee4",
+    "release_sha256": "e3fe7401c31cbc975d40b65f5a62a0fa756cb9eb1d0f7054996021686224f6c4",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/21_surgical_RNA_LNM_development/clinical_LNM_v2/scripts/train_all_12.py",
+    "original_sha256": "1e6ca8ab2402afdc595ac9fdf0404df8ed571e4f613c00bbd933bfcaaaf3cf19",
+    "release_sha256": "a39dda21ee44d4796061d9464cdb726419d613ba6578681b1d52852fe7d47dd4",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/21_surgical_RNA_LNM_development/clinical_LNM_v2/scripts/stage21_analyze.py",
+    "original_sha256": "289f05cd819b899810fa00e8d1e132a1a89264cdde4a5e4cc8aec0d857bb9feb",
+    "release_sha256": "c82d1dea4338c088df6f39b010eabb84388f55f4f7329cc44d540c80397085e0",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/21_surgical_RNA_LNM_development/clinical_LNM_v2/scripts/fixed_candidate_sensitivity.py",
+    "original_sha256": "bfe1db99e838f3b56972b061a8c57f43063c6398770023cdabd6aadc23a6e234",
+    "release_sha256": "7a489e6bb5de6b2eef9333c1466ce60bf98cacf0393f2323c7b83ceecc9357c6",
+    "adaptation": "Local path constants replaced by documented installation tokens. Historical discrepancy cohort uses a private boolean manifest flag instead of accession constants."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/figure2/scripts/style.py",
+    "original_sha256": "b7e640b385cd785f71602cec06d46282ffd57d62f094552d6c5c3354dc188366",
+    "release_sha256": "b7e640b385cd785f71602cec06d46282ffd57d62f094552d6c5c3354dc188366",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/figure2/scripts/draw_figure2.py",
+    "original_sha256": "39ed231099f9f78746777f9fead3679fbf4c1175d320b52c5608d6952ea333a2",
+    "release_sha256": "39ed231099f9f78746777f9fead3679fbf4c1175d320b52c5608d6952ea333a2",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/figure3/scripts/draw_figure3.py",
+    "original_sha256": "7bf1e4a6e8907fff4bda59af719a9758f422fa25279dfea9869586cc34743186",
+    "release_sha256": "7bf1e4a6e8907fff4bda59af719a9758f422fa25279dfea9869586cc34743186",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/figure4/scripts/draw_figure4.py",
+    "original_sha256": "ec620a906caa9477c610dbc7119c08c93d03489d25fb42fdfa29209869dc9181",
+    "release_sha256": "ec620a906caa9477c610dbc7119c08c93d03489d25fb42fdfa29209869dc9181",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/relabel_diagnostic_update/scripts/recompute_esd.py",
+    "original_sha256": "e4588fe05cc4e30e9300fe5982af23f556450cb8760550a99d76568b26c82d96",
+    "release_sha256": "e4588fe05cc4e30e9300fe5982af23f556450cb8760550a99d76568b26c82d96",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/relabel_diagnostic_update/scripts/draw_relabel_esd.py",
+    "original_sha256": "57841edc4aca45a528538caaa5aabd6d025cd15127a51b9ece912399908dd09a",
+    "release_sha256": "57841edc4aca45a528538caaa5aabd6d025cd15127a51b9ece912399908dd09a",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/23_manuscript_figures/reports/rebuild_source_data.py",
+    "original_sha256": "1a0ce767ae79e88ea56a6639d2fa6fefd751851fe481d0801394acc89cb7201b",
+    "release_sha256": "1a0ce767ae79e88ea56a6639d2fa6fefd751851fe481d0801394acc89cb7201b",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/SCI论文最终组图素材/24_典型病例风险热图/Scripts/stage24_attribution.py",
+    "original_sha256": "5b31087fccf209c0b86abc8d8af4ce1c64bb59367c35059ce87e4b818d968853",
+    "release_sha256": "c8479ce916d88ff534b1f05df5a140e8abb7c2b0de7a0c31caf7e38d00d7b112",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/SCI论文最终组图素材/24_典型病例风险热图/Scripts/stage24_draw.py",
+    "original_sha256": "c8344ad56fcbe2f4ae4b672aba64604b5b436e22d67a60bada716c1eeaaa798a",
+    "release_sha256": "c8344ad56fcbe2f4ae4b672aba64604b5b436e22d67a60bada716c1eeaaa798a",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/SCI论文最终组图素材/24_典型病例风险热图/Scripts/stage24_verify.py",
+    "original_sha256": "7292adc603a5dc873d5a8146ad83805ac892820086437b2d99ef3e93c57fb5fd",
+    "release_sha256": "7292adc603a5dc873d5a8146ad83805ac892820086437b2d99ef3e93c57fb5fd",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  },
+  {
+    "path": "analysis/SCI论文最终组图素材/原始数据索引/RNA_feature_optimization/draw_rna_feature_optimization.py",
+    "original_sha256": "25690ef5610a58b8583f8988fe077c6abb94bb7729f75c3d288684b25db42f2c",
+    "release_sha256": "df1d8848a8320b119b58d5d365faefa31fdff242dfa605c82836c15612062d7b",
+    "adaptation": "Local path constants replaced by documented installation tokens."
+  }
+]
